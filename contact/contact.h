@@ -8,6 +8,8 @@
 #define max_tele 12
 #define max_addre 30
 #define max 100
+#define cheek 3
+#define cheek_2 2
 
 //人的信息
 typedef struct peo
@@ -19,16 +21,23 @@ typedef struct peo
 	char addre[max_addre];
 } peo;
 
-//通讯录
+//通讯录静态版本
+// typedef struct contact
+//{
+//	peo data[max];
+//	int ret;//记录人数
+//
+//} contact;
+//动态版本
  typedef struct contact
-{
-	peo data[max];
-	int ret;//记录人数
-
-} contact;
+ {
+	 peo* data;
+	 int ret;//记录人数
+	 int capacity;//记录通讯录容量
+ } contact;
 
 //初始化通讯录
-void initcontact(contact* pc);
+int  initcontact(contact* pc);
 
 //对通讯录进行存储
 void add_contact(contact* pc);
@@ -47,3 +56,9 @@ void seq_contact(contact* pc);
 
 //排序联系人
 void ait_contact(contact* pc);
+
+//销毁通讯录
+ void delet_contact(contact* pc);
+ 
+ //保存通讯录
+ void preserve_contact(const contact* pc);

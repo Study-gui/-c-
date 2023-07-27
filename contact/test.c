@@ -21,7 +21,7 @@ void menu()
 int main()
 {
 	int input = 0;
-	contact con[max];
+	contact con;
 	initcontact(&con);
 	do
 	{
@@ -48,7 +48,10 @@ int main()
 		case 6:
 			ait_contact(&con);
 			break;
-		case 0:
+		case 0://推出程序
+			//先保存在退出
+			preserve_contact(&con);
+			delet_contact(&con);
 			printf("退出\n");
 			break;
 		default:
@@ -56,6 +59,5 @@ int main()
 			break;
 		}
 	} while (input);
-
 	return 0;
 }
