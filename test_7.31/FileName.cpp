@@ -124,37 +124,72 @@
 //
 //	return 0;
 //}
+#include<assert.h>
+#include<ctype.h>
+enum  str
+{
+	count1,
+	count2
+} sta = count2;//判断字符串是否是合法的转换
 int my_atoi(const char* arr)
 {
-	int i = 0;
+	assert(arr);
 	int sz = 1;//判断正负号
-	int ret = 0;
+	long long  ret = 0;
 	if (*arr == '\0')
 	{
 		return 0;
 	}
+	while (*arr == ' ')//也可以使用函数isspace判断是非为空格
+	{
+		arr++;
+	}
 	if (*arr == '-')
 	{
 		sz = -1;
-	}
-	while (*arr == ' ')
-	{
-			arr++;
-	}
-	while(*(arr+i)!='\0')
-	{
-		ret = ret * 10 + sz*(*arr-'0');
 		arr++;
+	}
+	else if (*arr == '+')
+	{
+		sz = 1;
+		arr++;
+	}
+	
+	while(*(arr)!='\0')
+	{
+		if (isdigit(*arr))
+		{
+			ret = ret * 10 + sz * (*arr - '0');
+			arr++;
+		}
+		else
+		{
+			return (int)ret;
+		}
+		if (ret > INT_MAX || ret < INT_MIN)//判断是否大于和小于整形最大值和最小值
+		{
+			return 0;
+		}
+		
+	}
+	if (*arr == '\0')
+	{
+		sta = count1;
 	}
 	return (int)ret;
 }
 int main()
 {
-	char arr[]="-12345";
+	char arr[]="12345";
 	//gets_s(arr);
 	int b = my_atoi(arr);
-	int a = atoi(arr);
-	printf("%d\n", b);
-	printf("%d", a);
+	if (sta == count2)
+	{
+		printf("非法转换：%d", b);
+	}
+	else
+	{
+		printf("合理转换：%d", b);
+	}
 	return 0;
 }
