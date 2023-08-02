@@ -1,0 +1,3 @@
+﻿  FileName.cpp
+D:\c语言项目\c语言_2023\test_8_2\FileName.cpp(17,16): warning C4018: “<”: 有符号/无符号不匹配
+  test_8_2.vcxproj -> D:\c语言项目\c语言_2023\test_8_2\Debug\test_8_2.exe
