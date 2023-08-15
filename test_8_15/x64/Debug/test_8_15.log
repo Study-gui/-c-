@@ -1,0 +1,4 @@
+﻿  test.c
+D:\c语言项目\c语言_2023\test_8_15\test.c(318,19): warning C4477: “scanf”: 格式字符串“%c”需要类型“char *”的参数，但可变参数 2 拥有了类型“int *”
+D:\c语言项目\c语言_2023\test_8_15\test.c(326,19): warning C4477: “scanf”: 格式字符串“%c”需要类型“char *”的参数，但可变参数 2 拥有了类型“int *”
+  test_8_15.vcxproj -> D:\c语言项目\c语言_2023\test_8_15\x64\Debug\test_8_15.exe
