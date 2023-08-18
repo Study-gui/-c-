@@ -1,0 +1,4 @@
+﻿  BTtree.c
+D:\c语言项目\c语言_2023\test_8_17_BTtree\BTtree.c(64,3): warning C4033: “TreeLeafSize”必须返回值
+D:\c语言项目\c语言_2023\test_8_17_BTtree\BTtree.c(73): warning C4715: “TreeLeafSize”: 不是所有的控件路径都返回值
+  test_8_17_BTtree.vcxproj -> D:\c语言项目\c语言_2023\test_8_17_BTtree\x64\Debug\test_8_17_BTtree.exe
