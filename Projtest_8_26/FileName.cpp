@@ -104,7 +104,41 @@ void HeapSort(int* a, int n)
 		end--;
 	}
 }
-//快速排序,挖坑法
+//取中函数
+int GetMid(int* a, int left, int right)
+{
+	int mid = (left + right) >> 1;
+	if (a[mid] > a[left])
+	{
+		if (a[left] > a[right])
+		{
+			return left;
+		}
+		else if (a[right] > a[mid])
+		{
+			return mid;
+		}
+		else {
+			return right;
+		}
+	}
+	else {//a[mid]<a[left]
+		if (a[right] > a[left])
+		{
+			return left;
+		}
+		else if (a[mid] > a[right])
+		{
+			return mid;
+		}
+		else {
+			return right;
+		}
+	}
+}
+//快速排序,挖坑法,时间复杂度O（N*logN）
+//快速排序弊端，如果是有序的话时间复杂度就是O（N^2），所以要进行取中，进行赋值给left
+//并且可以进行小区间优化，就是递归到后面，可以进行插入排序，代替节省时间复杂度
 void QuickSort(int* a, int left, int right)
 {
 	//递归结束条件
@@ -112,14 +146,16 @@ void QuickSort(int* a, int left, int right)
 	{
 		return;
 	}
+	int mid = GetMid(a, left, right);
 	int begin = left, end = right;
+	Swap(&a[left], &a[mid]);
 	int pivot = begin;
 	int key = a[begin];
 	//一次循环的条件
 	while (begin<end)
 	{
 		//从右往左找小
-		while (begin<end && a[end] > key)
+		while (begin<end && a[end] >= key)
 		{
 			end--;
 		}
@@ -127,7 +163,7 @@ void QuickSort(int* a, int left, int right)
 		a[pivot] = a[end];
 		pivot = end;
 		//从左往右找大
-		while (begin<end && a[begin] < key)
+		while (begin<end && a[begin] <= key)
 		{
 			begin++;
 		}
@@ -138,11 +174,118 @@ void QuickSort(int* a, int left, int right)
 	//把最后的坑，用记录的key，填上
 	pivot = begin;
 	a[pivot] = key;
+	//[left,pivot-1] pivot [pivot+1,right]
+	//小区间优化
+	if (pivot - 1 - left < 10)
+	{
+		InsertSort(a + left, pivot - 1 - left + 1);
+	}
+	else {
+		
+		QuickSort(a, left, pivot - 1);
+	}
+	if (right - (pivot + 1) < 10)
+	{
+		InsertSort(a + pivot + 1, right - (pivot + 1) + 1);
+	}
+	else {
+		QuickSort(a, pivot + 1, right);
+	}
 	//采用分治,将两边再次递归、
 	//左边
-	QuickSort(a, left, pivot - 1);
+	//QuickSort(a, left, pivot - 1);
 	//右边
-	QuickSort(a, pivot + 1, right);
+	//QuickSort(a, pivot + 1, right);
+}
+//快速排序，交换的形式
+void QuickSort1(int* a, int left, int right)
+{
+	//递归终止条件
+	if (left >= right)
+	{
+		return;
+	}
+	int mid = GetMid(a, left, right);
+	int begin = left, end = right;
+	Swap(&a[left], &a[mid]);
+	//int pivot = begin;
+	int key = a[begin];
+	while (begin < end)//就是找到右边大的数，和左边小的数进行交换，不同与挖坑法，这个是直接进行交换
+	{
+		while (begin < end && a[end] >= key)//找右边小于key的数
+		{
+			end--;
+		}
+		while (begin < end && a[begin] <= key)//找左边大于key的数
+		{
+			begin++;
+		}
+		Swap(&a[begin], &a[end]);//把右边大的数，和左边小的数进行交换
+	}
+	Swap(&a[begin], &key);//把begin跟key进行交换
+	//进行小区间优化
+	if (begin - 1 - left < 10)
+	{
+		InsertSort(a + left, begin - 1 - left + 1);
+	}
+	else {
+
+		QuickSort(a, left, begin - 1);
+	}
+	if (right - (begin + 1) < 10)
+	{
+		InsertSort(a + begin + 1, right - (begin + 1) + 1);
+	}
+	else {
+		QuickSort(a, begin + 1, right);
+	}
+
+
+
+}
+//快速排序，快慢指针法
+void QuickSort2(int* a, int left, int right)
+{
+	//递归结束条件
+	if (left >= right)
+	{
+		return;
+	}
+	int mid = GetMid(a, left, right);
+	//int begin = left, end = right;
+	Swap(&a[left], &a[mid]);
+	//int pivot = begin;
+	int key = a[left];
+	int cur = left;//慢指针
+	int prev = left + 1;//快指针
+	while (prev <= right)//遍历整个数组，进行交换
+	{
+		while (a[prev] < key&& ++cur!=prev)//小于key就进行交换
+		{
+			Swap(&a[cur], &a[prev]);
+		}
+		prev++;
+	}
+	Swap(&key, &a[cur]);//把最后（cur的位置一定小于key）和key进行交换
+	//小区间优化
+	if (cur - 1 - left < 10)
+	{
+		InsertSort(a + left, cur - 1 - left + 1);
+	}
+	else {
+
+		QuickSort(a, left, cur - 1);
+	}
+	if (right - (cur + 1) < 10)
+	{
+		InsertSort(a + cur + 1, right - (cur + 1) + 1);
+	}
+	else {
+		QuickSort(a, cur + 1, right);
+	}
+
+
+
 }
 //选择插入，时间复杂度为O（N^2）
 void SelectSort(int* a, int n)
@@ -162,7 +305,7 @@ void SelectSort(int* a, int n)
 
 int main()
 {
-	int arr[] = { 9,8,7,6,5,4,3,2,1 };
+	int arr[] = { 9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1 };
 	int n = sizeof(arr) / sizeof(arr[0]);
 	////InsertSort(arr, n);
 	//ShellSort(arr, n);
@@ -172,7 +315,9 @@ int main()
 	//}
 	//HeapSort(arr, n);
 	//QuickSort(arr, 0, n - 1);
-	SelectSort(arr, n);
+	//SelectSort(arr, n);
+	//QuickSort1(arr, 0, n - 1);
+	QuickSort2(arr, 0, n - 1);
 	for (int i = 0; i < n; i++)
 	{
 		printf("%d ", arr[i]);
