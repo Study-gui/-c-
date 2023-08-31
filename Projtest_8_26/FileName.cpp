@@ -1,6 +1,6 @@
  #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-
+#include<stdlib.h>
 
 
 //插入排序
@@ -96,13 +96,18 @@ void HeapSort(int* a, int n)
 	}
 	//堆排序
 	//升序，采用建大堆，时间复杂度为O（N*logN）
-	int end = n - 1;
+	/*int end = n - 1;
 	while (end >0)
 	{
 		Swap(&a[0], &a[end]);
 		AdjustDwon(a, end, 0);
 		end--;
-	}
+	}*/
+	//int j = 0;
+	//for (j = 0; j < n; j++)
+	//{
+	//	AdjustDwon(a, n, j);
+	//}
 }
 //取中函数
 int GetMid(int* a, int left, int right)
@@ -283,8 +288,46 @@ void QuickSort2(int* a, int left, int right)
 	else {
 		QuickSort(a, cur + 1, right);
 	}
+}
+//归并子函数
+void _MergeSort(int* a, int left, int right, int* tmp)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int mid = (left + right) >> 1;
 
+	_MergeSort(a, left, mid, tmp);
+	_MergeSort(a, mid+1,right,tmp);
 
+	int begin1 = left;
+	int end1 = mid;
+	int begin2 = mid + 1; 
+	int end2 = right;
+	int index = left;
+
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[index++] = a[begin1++];
+		}
+		else {
+			tmp[index++] = a[begin2++];
+		}
+	}
+
+	for (int i = 0; i < right ;i++)
+	{
+		a[i] = tmp[i];
+	}
+}
+//归并排序
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	_MergeSort(a, 0, n - 1, tmp);
 
 }
 //选择插入，时间复杂度为O（N^2）
@@ -305,7 +348,7 @@ void SelectSort(int* a, int n)
 
 int main()
 {
-	int arr[] = { 9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1,9,8,7,6,5,4,3,2,1 };
+	int arr[] = {3,5,2,7,8,6,1,9,4,0 };
 	int n = sizeof(arr) / sizeof(arr[0]);
 	////InsertSort(arr, n);
 	//ShellSort(arr, n);
@@ -313,15 +356,15 @@ int main()
 	//{
 	//	printf("%d ", arr[i]);
 	//}
-	//HeapSort(arr, n);
+	HeapSort(arr, n);
 	//QuickSort(arr, 0, n - 1);
 	//SelectSort(arr, n);
 	//QuickSort1(arr, 0, n - 1);
-	QuickSort2(arr, 0, n - 1);
+	//QuickSort2(arr, 0, n - 1);
+	//MergeSort(arr,n-1);
 	for (int i = 0; i < n; i++)
 	{
 		printf("%d ", arr[i]);
 	}
-
 	return 0;
 }
