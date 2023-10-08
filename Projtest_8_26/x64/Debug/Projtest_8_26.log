@@ -1,3 +1,2 @@
 ﻿D:\vs\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(Projtest_8_26.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  FileName.cpp
   Projtest_8_26.vcxproj -> D:\c语言项目\c语言_2023\Projtest_8_26\x64\Debug\test_8_26排序.exe

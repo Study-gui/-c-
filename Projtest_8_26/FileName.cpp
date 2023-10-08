@@ -217,11 +217,11 @@ void QuickSort1(int* a, int left, int right)
 	int key = a[begin];
 	while (begin < end)//就是找到右边大的数，和左边小的数进行交换，不同与挖坑法，这个是直接进行交换
 	{
-		while (begin < end && a[end] >= key)//找右边小于key的数
+		while (begin < end && a[end] >key)//找右边小于key的数
 		{
 			end--;
 		}
-		while (begin < end && a[begin] <= key)//找左边大于key的数
+		while (begin < end && a[begin] < key)//找左边大于key的数
 		{
 			begin++;
 		}
@@ -229,21 +229,21 @@ void QuickSort1(int* a, int left, int right)
 	}
 	Swap(&a[begin], &key);//把begin跟key进行交换
 	//进行小区间优化
-	if (begin - 1 - left < 10)
-	{
-		InsertSort(a + left, begin - 1 - left + 1);
-	}
-	else {
+	//if (begin - 1 - left < 10)
+	//{
+	//	InsertSort(a + left, begin - 1 - left + 1);
+	//}
+	//else {
 
-		QuickSort(a, left, begin - 1);
-	}
-	if (right - (begin + 1) < 10)
-	{
-		InsertSort(a + begin + 1, right - (begin + 1) + 1);
-	}
-	else {
+		QuickSort(a, left, begin);
+	//}
+	//if (right - (begin + 1) < 10)
+	//{
+	//	InsertSort(a + begin + 1, right - (begin + 1) + 1);
+	//}
+	//else {
 		QuickSort(a, begin + 1, right);
-	}
+	//}
 
 
 
@@ -271,23 +271,23 @@ void QuickSort2(int* a, int left, int right)
 		}
 		prev++;
 	}
-	Swap(&key, &a[cur]);//把最后（cur的位置一定小于key）和key进行交换
+	Swap(&a[left], &a[cur]);//把最后（cur的位置一定小于key）和key进行交换
 	//小区间优化
-	if (cur - 1 - left < 10)
-	{
-		InsertSort(a + left, cur - 1 - left + 1);
-	}
-	else {
+	//if (cur - 1 - left < 10)
+	//{
+	//	InsertSort(a + left, cur - 1 - left + 1);
+	//}
+	//else {
 
-		QuickSort(a, left, cur - 1);
-	}
-	if (right - (cur + 1) < 10)
-	{
-		InsertSort(a + cur + 1, right - (cur + 1) + 1);
-	}
-	else {
-		QuickSort(a, cur + 1, right);
-	}
+		QuickSort(a, left, cur );
+	//}
+	//if (right - (cur + 1) < 10)
+	//{
+	//	InsertSort(a + cur + 1, right - (cur + 1) + 1);
+	//}
+	//else {
+		QuickSort(a, cur+1, right);
+	//}
 }
 //归并子函数
 void _MergeSort(int* a, int left, int right, int* tmp)
@@ -317,8 +317,15 @@ void _MergeSort(int* a, int left, int right, int* tmp)
 			tmp[index++] = a[begin2++];
 		}
 	}
-
-	for (int i = 0; i < right ;i++)
+	while (begin1 <= end1)
+	{
+		tmp[index++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[index++] = a[begin2++];
+	}
+	for (int i = left; i <= right ;i++)
 	{
 		a[i] = tmp[i];
 	}
@@ -327,7 +334,8 @@ void _MergeSort(int* a, int left, int right, int* tmp)
 void MergeSort(int* a, int n)
 {
 	int* tmp = (int*)malloc(sizeof(int) * n);
-	_MergeSort(a, 0, n - 1, tmp);
+	_MergeSort(a, 0, n-1, tmp);
+	free(tmp);
 
 }
 //选择插入，时间复杂度为O（N^2）
@@ -356,12 +364,12 @@ int main()
 	//{
 	//	printf("%d ", arr[i]);
 	//}
-	HeapSort(arr, n);
+	//HeapSort(arr, n);
 	//QuickSort(arr, 0, n - 1);
 	//SelectSort(arr, n);
 	//QuickSort1(arr, 0, n - 1);
-	//QuickSort2(arr, 0, n - 1);
-	//MergeSort(arr,n-1);
+	QuickSort2(arr, 0, n-1 );
+	//MergeSort(arr,n);
 	for (int i = 0; i < n; i++)
 	{
 		printf("%d ", arr[i]);
