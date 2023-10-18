@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_10_18", "test_10_18.vcxproj", "{EEE773C9-CEA0-486E-959F-47E17188D005}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Debug|x64.ActiveCfg = Debug|x64
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Debug|x64.Build.0 = Debug|x64
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Debug|x86.ActiveCfg = Debug|Win32
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Debug|x86.Build.0 = Debug|Win32
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Release|x64.ActiveCfg = Release|x64
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Release|x64.Build.0 = Release|x64
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Release|x86.ActiveCfg = Release|Win32
+		{EEE773C9-CEA0-486E-959F-47E17188D005}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B44BC54-C45E-435B-B1C7-D4B40DDA5517}
+	EndGlobalSection
+EndGlobal
