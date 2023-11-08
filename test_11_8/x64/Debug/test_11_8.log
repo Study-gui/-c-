@@ -1,0 +1,4 @@
+﻿  FileName.cpp
+D:\c语言项目\c语言_2023\test_11_8\FileName.cpp(122,22): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\c语言项目\c语言_2023\test_11_8\FileName.cpp(139,20): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  test_11_8.vcxproj -> D:\c语言项目\c语言_2023\test_11_8\x64\Debug\test_11_8.exe
