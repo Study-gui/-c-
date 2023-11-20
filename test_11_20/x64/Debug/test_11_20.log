@@ -1,0 +1,5 @@
+﻿  类模板继承.cpp
+D:\c语言项目\c语言_2023\test_11_20\类模板继承.cpp(35,18): error C2280: “son<std::string,int>::son(void)”: 尝试引用已删除的函数
+D:\c语言项目\c语言_2023\test_11_20\类模板继承.cpp(27,1): message : 编译器已在此处生成“son<std::string,int>::son”
+D:\c语言项目\c语言_2023\test_11_20\类模板继承.cpp(27,1): message : “son<std::string,int>::son(void)”: 由于 基类“base<std::string,int>”不具备相应的 默认构造函数 或重载解决不明确，因此已隐式删除函数
+D:\c语言项目\c语言_2023\test_11_20\类模板继承.cpp(32,2): message : 参见“base<std::string,int>”的声明
