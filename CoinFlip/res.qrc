@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>C:/Users/2814554384/Desktop/res/BackButton.png</file>
+        <file>C:/Users/2814554384/Desktop/res/BackButtonSelected.png</file>
+        <file>C:/Users/2814554384/Desktop/res/BackButtonSound.wav</file>
+        <file>C:/Users/2814554384/Desktop/res/BoardNode(1).png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0001.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0002.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0003.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0004.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0005.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0006.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0007.png</file>
+        <file>C:/Users/2814554384/Desktop/res/Coin0008.png</file>
+        <file>C:/Users/2814554384/Desktop/res/ConFlipSound.wav</file>
+        <file>C:/Users/2814554384/Desktop/res/LevelCompletedDialogBg.png</file>
+        <file>C:/Users/2814554384/Desktop/res/LevelIcon.png</file>
+        <file>C:/Users/2814554384/Desktop/res/LevelWinSound.wav</file>
+        <file>C:/Users/2814554384/Desktop/res/MenuSceneBg.png</file>
+        <file>C:/Users/2814554384/Desktop/res/MenuSceneStartButton.png</file>
+        <file>C:/Users/2814554384/Desktop/res/OtherSceneBg.png</file>
+        <file>C:/Users/2814554384/Desktop/res/PlayLevelSceneBg.png</file>
+        <file>C:/Users/2814554384/Desktop/res/TapButtonSound.wav</file>
+        <file>C:/Users/2814554384/Desktop/res/Title.png</file>
+    </qresource>
+</RCC>
