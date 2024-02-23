@@ -1,0 +1,4 @@
+﻿  源.cpp
+D:\c语言项目\2024\test_2_23\源.cpp(12,18): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\c语言项目\2024\test_2_23\源.cpp(15,19): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  test_2_23.vcxproj -> D:\c语言项目\2024\test_2_23\x64\Debug\test_2_23.exe
